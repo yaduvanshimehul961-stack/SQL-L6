@@ -1,0 +1,33 @@
+use sakila;
+-- function
+-- block of code => code reusable and readable
+-- pre-defined and user defined
+-- pre-defined => scaler function --> applied for each row and result will be given for each row
+-- string(character) ,number,data related function
+
+-- string related function 
+
+select * from actor;
+select first_name , lower(first_name) ,last_name from actor; -- lower function
+select first_name , upper(first_name) ,last_name from actor; -- upperfunction
+
+select first_name , last_name ,concat(first_name ,last_name) from actor; -- concat function
+-- sxtract me all the data first_name + last_name =' EDCHASE'
+select * from actor where concat(first_name,last_name)='EDCHASE';
+
+-- COMBINE WHERE CONCAT (col1,col2)='EDCHASE'
+
+select *, concat (first_name,last_name) from actor
+where concat (first_name,last_name ) like '%A%A%';
+
+-- concat with a seprator 
+select first_name, last_name, concat('MR','-', first_name, last_name),
+concat_ws('-', 'MR', first_name, last_name) from actor;
+
+-- substr => ectract some portion (extract data basis  of position)
+select first_name, last_name, substr(last_name ,1,4) from actor;
+
+select *, substr(first_name,1,1) from actor 
+where substr(first_name,1,1)='A' or substr(first_name,1,1)='E';
+
+select first_name,  replace(first_name,'A','#') from actor;
